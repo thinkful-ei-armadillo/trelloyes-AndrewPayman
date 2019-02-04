@@ -1,15 +1,15 @@
 import React from 'react';
 import List from './List';
-
+import './App.css';
 
 function App(props) {
-  const arrayLists = props.store.lists.map((element,index) => {
-  const cards = element.cardIds.map((item) => {
-   const toReturn = props.store.allCards[item]; 
-   toReturn.id = item; 
-   return toReturn;
-  })
-   return <List header={element.header} key={element.id} cards={cards} />
+  const arrayLists = props.store.lists.map((element, index) => {
+    const cards = element.cardIds.map(item => {
+      const toReturn = props.store.allCards[item];
+      toReturn.id = item;
+      return toReturn;
+    });
+    return <List header={element.header} key={element.id} cards={cards} />;
   });
 
   //store.lists.cardIds[item] => store.allCards.[store.lists.cardIds[item]]
@@ -18,7 +18,7 @@ function App(props) {
       <header className="App-header">
         <h1>Trelloyes!</h1>
       </header>
-      {arrayLists}
+      <div className="App-list">{arrayLists}</div>
     </main>
   );
 }
